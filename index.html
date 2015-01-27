@@ -1,60 +1,86 @@
 <!DOCTYPE html>
 <html>
-
-  <head>
-    <meta charset='utf-8'>
-    <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <meta name="description" content="Mdtalk : 一个简单的单对单会话聊天插件">
-
-    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
-
-    <title>Mdtalk</title>
-  </head>
-
-  <body>
-
-    <!-- HEADER -->
-    <div id="header_wrap" class="outer">
-        <header class="inner">
-          <a id="forkme_banner" href="https://github.com/nccun/mdtalk">View on GitHub</a>
-
-          <h1 id="project_title">Mdtalk</h1>
-          <h2 id="project_tagline">一个简单的单对单会话聊天插件</h2>
-
-            <section id="downloads">
-              <a class="zip_download_link" href="https://github.com/nccun/mdtalk/zipball/master">Download this project as a .zip file</a>
-              <a class="tar_download_link" href="https://github.com/nccun/mdtalk/tarball/master">Download this project as a tar.gz file</a>
-            </section>
-        </header>
-    </div>
-
-    <!-- MAIN CONTENT -->
-    <div id="main_content_wrap" class="outer">
-      <section id="main_content" class="inner">
-        <h3>
-<a id="一个简单的单对单会话插件基于jquery" class="anchor" href="#%E4%B8%80%E4%B8%AA%E7%AE%80%E5%8D%95%E7%9A%84%E5%8D%95%E5%AF%B9%E5%8D%95%E4%BC%9A%E8%AF%9D%E6%8F%92%E4%BB%B6%E5%9F%BA%E4%BA%8Ejquery" aria-hidden="true"><span class="octicon octicon-link"></span></a>一个简单的单对单会话插件，基于jQuery</h3>
-
-<h5>
-<a id="支持" class="anchor" href="#%E6%94%AF%E6%8C%81" aria-hidden="true"><span class="octicon octicon-link"></span></a>支持</h5>
-
-<ul>
-<li>2种快捷键快捷键发送消息,Enter和Ctrl+Enter，并使用localStorage保存</li>
-<li>窗口可拖动，窗口位置用localStorage保存</li>
-<li>导入会话历史</li>
-<li>查看过去消息记录</li>
-</ul>
-      </section>
-    </div>
-
-    <!-- FOOTER  -->
-    <div id="footer_wrap" class="outer">
-      <footer class="inner">
-        <p class="copyright">Mdtalk maintained by <a href="https://github.com/nccun">nccun</a></p>
-        <p>Published with <a href="http://pages.github.com">GitHub Pages</a></p>
-      </footer>
-    </div>
-
-    
-
-  </body>
+<head lang="en">
+  <meta charset="UTF-8">
+  <title>码道·会话窗口</title>
+  <link rel="stylesheet" href="http://cdn.staticfile.org/twitter-bootstrap/3.3.0/css/bootstrap.min.css">
+  <link rel="stylesheet" href="http://cdn.staticfile.org/font-awesome/4.2.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="talk.css">
+</head>
+<body>
+  <button class="btn btn-warning">显/隐 会话窗口</button>
+</body>
+<script src="http://cdn.staticfile.org/jquery/1.11.1/jquery.min.js"></script>
+<script src="http://cdn.staticfile.org/twitter-bootstrap/3.3.0/js/bootstrap.min.js"></script>
+<script src="talk.js"></script>
+<script>
+  talk = null;
+  $(function() {
+    talk = $('button').mdtalk({
+      me: {
+        _id: 'aaa',
+        name: '李洪亮',
+        header: 'http://q.qqtouxiang.com/q/2011-2-15/2899513b3b8b0ccc7c9f92296a4789a9.jpg'
+      },
+      to: {
+        _id: 'bbb',
+        name: '王小二',
+        header: 'http://q.qqtouxiang.com/q/2012-11-1/50e61a3cd0ab99956865c261e5508346.jpg'
+      },
+      send: function(text) {
+        var date = new Date();
+        console.log(date.toLocaleDateString() + ' me: ' + text);
+        var promise = new Promise();
+        setTimeout(function() {
+          if (Math.random() < 0.8) {
+            promise.resolve();
+          } else {
+            promise.reject();
+          }
+        }, 1000);
+        return promise;
+      },
+      more: function(page) {
+        var promise = new Promise();
+        setTimeout(function() {
+          promise.resolve([
+            {
+              _id: 'bbb',
+              text: 'hello beauty',
+              time: '2014/1/24 11:23:13'
+            },
+            {
+              _id: 'aaa',
+              text: 'hi girl',
+              time: '2014/1/24 12:00:10'
+            }
+          ]);
+        }, 1000);
+        return promise;
+      }
+    });
+    talk.history([
+      {
+        _id: 'bbb',
+        text: '你好，这里是测试账号',
+        time: '2014/1/11 11:11:11'
+      },
+      {
+        _id: 'aaa',
+        text: '哦，我知道了。',
+        time: '2014/1/11 11:15:32'
+      },
+      {
+        _id: 'bbb',
+        text: '请问有什么可以帮助您的？',
+        time: '2014/1/11 11:16:02'
+      },
+      {
+        _id: 'aaa',
+        text: '我就看看，不说话<br/>呵呵',
+        time: '2014/1/11 11:20:28'
+      }
+    ]);
+  });
+</script>
 </html>

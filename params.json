@@ -1,1 +1,0 @@
-{"name":"Mdtalk","tagline":"一个简单的单对单会话聊天插件","body":"###一个简单的单对单会话插件，基于jQuery\r\n#####支持\r\n* 2种快捷键快捷键发送消息,Enter和Ctrl+Enter，并使用localStorage保存\r\n* 窗口可拖动，窗口位置用localStorage保存\r\n* 导入会话历史\r\n* 查看过去消息记录","google":"","note":"Don't delete this file! It's used internally to help with page regeneration."}
