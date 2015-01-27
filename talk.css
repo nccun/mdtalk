@@ -1,0 +1,282 @@
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #bbbbbb;
+    background: rgba(0, 0, 0, 0.15);
+    border-radius: 5px;
+}
+
+::-webkit-scrollbar-track {
+    background: #dddddd;
+    background: rgba(0, 0, 0, 0.05);
+}
+
+.talk-container {
+	position: fixed;
+	top: 30%;
+	left: 30%;
+	width: 600px;
+	background-color: #fff;
+	border-radius: 4px;
+	border: 1px solid #f3f3f3;
+	z-index: 9999999;
+	box-shadow: 0px 0px 1px 1px #999;
+}
+
+.talk-container .heading {
+	border-bottom: 1px solid #eee;
+	padding: 12px;
+	height: 41px;
+	color: #666;
+	cursor: all-scroll;
+}
+
+.talk-container .heading .operation {
+	cursor: default;
+}
+
+.talk-container .heading .talk-minus,.talk-container .heading .talk-close {
+	width: 20px;
+	height: 20px;
+	text-align: center;
+	line-height: 20px;
+	color: #fff;
+	background-color: #09f;
+	cursor: pointer;
+}
+
+.talk-container .heading .talk-close {
+	background-color: #f90;
+}
+
+.talk-container .heading .talk-minus:hover {
+	background: #0af;
+}
+
+.talk-container .heading .talk-close:hover {
+	background: #fa0;
+}
+
+.talk-container .talk-content {
+	padding: 12px;
+    height: 400px;
+    overflow: hidden;
+}
+
+.talk-container .talk-content:hover {
+    overflow: auto;
+}
+
+.talk-container .talk-content .more {
+    text-align: center;
+    color: #2786E4;
+    margin-bottom: 15px;
+    cursor: pointer;
+    font-size: 12px;
+}
+
+.talk-container .talk-content .more .icon {
+    display: inline-block;
+}
+
+.talk-container .talk-content .more .loading {
+    display: none;
+}
+
+.talk-container .talk-content .more.loading .icon {
+    display: none;
+}
+
+.talk-container .talk-content .more.loading .loading {
+    display: inline-block;
+}
+
+.talk-container .talk-content .more:hover {
+    color: #1670EB;
+}
+
+.talk-container .talk-content ul {
+    list-style: none;
+    padding: 0;
+}
+
+.talk-container .talk-content ul li {
+	margin-bottom: 20px;
+	position: relative;
+}
+
+.talk-container .talk-content ul li.history {
+    font-size: 12px;
+    text-align: center;
+}
+
+.talk-container .talk-content ul li.history:before,.talk-container .talk-content ul li.history:after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 8px;
+    width: 120px;
+    display: block;
+    height: 1px;
+}
+
+.talk-container .talk-content ul li.history:before {
+    margin-left: -175px;
+    background: -moz-linear-gradient(right, #ccc, #fff);
+    background: -webkit-gradient(linear, right center, left center, from(#ccc), to(#fff));
+    background-color: #ccc;
+}
+
+.talk-container .talk-content ul li.history:after {
+    margin-left: 55px;
+    background: -moz-linear-gradient(left, #ccc, #fff);
+    background: -webkit-gradient(linear, left center, right center, from(#ccc), to(#fff));
+    background-color: #ccc;
+}
+
+.talk-container .talk-content ul li .status {
+    float: left;
+}
+
+.talk-container .talk-content ul li .status .pending {
+    color: #084668;
+}
+
+.talk-container .talk-content ul li .status .failed {
+    border: 1px solid #DD473C;
+    background-color: #DD473C;
+    border-radius: 50%;
+    width: 17px;
+    height: 17px;
+    line-height: 16px;
+    text-align: center;
+    color: #fff;
+    font-size: 12px;
+}
+
+.talk-container .talk-content ul li .status .pending,.talk-container .talk-content ul li .status .failed {
+    margin-right: 10px;
+    display: none;
+}
+
+.talk-container .talk-content ul li .status.pending .pending {
+    display: inline-block;
+}
+
+.talk-container .talk-content ul li .status.failed .failed {
+    display: inline-block;
+}
+
+.talk-container .talk-content ul li .text {
+	margin: 0;
+	padding: 0;
+	line-height:20px;
+    display: inline-block;
+}
+
+.talk-container .talk-content ul li .text .timer {
+    display: block;
+    text-align: left;
+    font-size: 10px;
+    color: #999;
+}
+
+.talk-container .talk-content ul li.current-user .text .timer {
+    text-align: right;
+}
+
+.talk-container .talk-content ul li img {
+	width: 32px;
+	height: 32px;
+	border-radius: 50%;
+	position: absolute;
+	left: 0;
+	top: 0;
+}
+
+.talk-container .talk-content ul li.current-user img {
+	left: auto;
+	right: 0;
+}
+
+.talk-container .talk-content ul li .message {
+	position: relative;
+	display: inline-block;
+	float: left;
+	margin-left: 40px;
+	margin-right: 40px;
+	padding: 6px 15px;
+	border-radius: 8px;
+	background-color: #E6EAF0;
+    color: #666;
+}
+
+.talk-container .talk-content ul li .message:before {
+	content: '';
+	display: block;
+	position: absolute;
+	left: -11px;
+	top: 6px;
+	width: 0;
+	height: 0;
+	border-style: solid;
+	border-width: 6px;
+	border-color: transparent #E6EAF0 transparent transparent;
+}
+
+.talk-container .talk-content ul li.current-user .message {
+	float: right;
+	background-color: #CCE7F5;
+}
+
+.talk-container .talk-content ul li.current-user .message:before {
+	left: auto;
+	right: -11px;
+	border-color: transparent transparent transparent #CCE7F5;
+}
+
+.talk-container .talk-post {
+	padding: 0;
+	position: relative;
+	border-top:1px solid #eee;
+}
+
+.talk-container .talk-post textarea {
+	border-radius: 0;
+	border: none;
+	width: 100%;
+	height: 80px;
+	padding: 12px;
+	resize: none;
+	outline: none !important;
+}
+
+.talk-container .talk-post .btn-group {
+	position: absolute;
+	right: 12px;
+	bottom: 8px;
+}
+
+.talk-container .talk-post .btn-group .btn-success:focus {
+    background-color: #5cb85c;
+    border-color: #4cae4c;
+}
+
+.talk-container .talk-post .btn-group .send {
+	width: 80px;
+}
+
+.talk-container .talk-post .btn-group .btn {
+	padding: 4px 6px;
+}
+
+.talk-container .talk-post .btn-group .dropdown-menu a {
+	padding-left: 8px;
+}
+
+.talk-container .talk-post .btn-group .dropdown-menu .hotkey {
+	width: 20px;
+	display: inline-block;
+}

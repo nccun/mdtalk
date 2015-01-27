@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+  <meta charset="UTF-8">
+  <title>码道·会话窗口</title>
+  <link rel="stylesheet" href="http://cdn.staticfile.org/twitter-bootstrap/3.3.0/css/bootstrap.min.css">
+  <link rel="stylesheet" href="http://cdn.staticfile.org/font-awesome/4.2.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="talk.css">
+</head>
+<body>
+  <button class="btn btn-warning">显/隐 会话窗口</button>
+</body>
+<script src="http://cdn.staticfile.org/jquery/1.11.1/jquery.min.js"></script>
+<script src="http://cdn.staticfile.org/twitter-bootstrap/3.3.0/js/bootstrap.min.js"></script>
+<script src="talk.js"></script>
+<script>
+  talk = null;
+  $(function() {
+    talk = $('button').mdtalk({
+      me: {
+        _id: 'aaa',
+        name: '李洪亮',
+        header: 'http://q.qqtouxiang.com/q/2011-2-15/2899513b3b8b0ccc7c9f92296a4789a9.jpg'
+      },
+      to: {
+        _id: 'bbb',
+        name: '王小二',
+        header: 'http://q.qqtouxiang.com/q/2012-11-1/50e61a3cd0ab99956865c261e5508346.jpg'
+      },
+      send: function(text) {
+        var date = new Date();
+        console.log(date.toLocaleDateString() + ' me: ' + text);
+        var promise = new Promise();
+        setTimeout(function() {
+          if (Math.random() < 0.8) {
+            promise.resolve();
+          } else {
+            promise.reject();
+          }
+        }, 1000);
+        return promise;
+      },
+      more: function(page) {
+        var promise = new Promise();
+        setTimeout(function() {
+          promise.resolve([
+            {
+              _id: 'bbb',
+              text: 'hello beauty',
+              time: '2014/1/24 11:23:13'
+            },
+            {
+              _id: 'aaa',
+              text: 'hi girl',
+              time: '2014/1/24 12:00:10'
+            }
+          ]);
+        }, 1000);
+        return promise;
+      }
+    });
+    talk.history([
+      {
+        _id: 'bbb',
+        text: '你好，这里是测试账号',
+        time: '2014/1/11 11:11:11'
+      },
+      {
+        _id: 'aaa',
+        text: '哦，我知道了。',
+        time: '2014/1/11 11:15:32'
+      },
+      {
+        _id: 'bbb',
+        text: '请问有什么可以帮助您的？',
+        time: '2014/1/11 11:16:02'
+      },
+      {
+        _id: 'aaa',
+        text: '我就看看，不说话<br/>呵呵',
+        time: '2014/1/11 11:20:28'
+      }
+    ]);
+  });
+</script>
+</html>
